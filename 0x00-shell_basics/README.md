@@ -13,3 +13,4 @@ rmdir "/tmp/my-new-dir/" removes direcory my-new-dir in /tmp/ dir
 ls -al "." ".." "/boot" - lists all files in the specified dir
 file "/tmp/iamafile" - prints the type of the file named iamafile
 ln -s creates softlink
+cp -nu *.html copies newer versions of html and doesnt overwrite
