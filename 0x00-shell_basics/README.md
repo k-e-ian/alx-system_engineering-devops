@@ -7,3 +7,4 @@ ls -al, Display current directory contents, including hidden files in long forma
 ls -an, Display current directory contents numerically, including hidden files in long format
 mkdir "/tmp/my-new-dir" - creates a directory named my-new-dir in the /tmp/ directory
 mv "/tmp/betty" "/tmp/my-new-dir" - Move the file betty from /tmp/ to /tmp/my-new-dir
+rm "/tmp/my-new-dir/betty" - remove file betty in /tmp/my-new-dir
