@@ -12,3 +12,4 @@ rmdir "/tmp/my-new-dir/" removes direcory my-new-dir in /tmp/ dir
 "cd -" changes the working directory to the previous one
 ls -al "." ".." "/boot" - lists all files in the specified dir
 file "/tmp/iamafile" - prints the type of the file named iamafile
+ln -s creates softlink
