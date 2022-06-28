@@ -8,4 +8,5 @@ set lists all local variables and environment variables, and functions
 BEST="School" create local variable BEST with the Value School
 export local variable to make it global i.e export BEST="School"
 perform arithmetics with a variable $((VARIABLE+123))
+2#1110001 changes binary to decimal 
 
