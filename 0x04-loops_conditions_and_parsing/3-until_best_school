@@ -3,7 +3,7 @@
 
 times=10
 
-until (($times == 0))
+until (("$times" == 0))
 do
 	echo "Best School"
 	((times--))
