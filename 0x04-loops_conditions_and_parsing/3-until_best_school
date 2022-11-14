@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# print "Best School" ten times using until
+
+times=10
+
+until (($times == 0))
+do
+	echo "Best School"
+	((times--))
+done
