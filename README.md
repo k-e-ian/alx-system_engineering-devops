@@ -1,2 +1,1 @@
-# alx-system_engineering-devops
-# bash_scripting
+My first bash project readme
