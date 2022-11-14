@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# print "Best School" 10 times, but "Hi" at the 9th iteration
+
+times=0
+
+while (("$times" < 10))
+do
+	if [ $times -eq 9 ]
+	then
+		echo "Hi"
+	fi
+	echo "Best School"
+	((times++))
+done
