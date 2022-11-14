@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Print "Best School" 10 times, whereby, the 4th is replaced y "bad luck"
+# and 8th by "good luck" using while loop and if statements
+
+times=0
+
+while (("times" < 10))
+do
+	if [ $times -eq 4 ]
+	then
+		echo "bad luck"
+	fi
+	if [ $times -eq 8 ]
+	then
+		echo "good luck"
+	fi
+	echo "Best School"
+	((times++))
+done
