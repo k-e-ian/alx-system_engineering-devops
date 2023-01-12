@@ -1,8 +1,14 @@
-# changes to the configuration file, disable authentication
+# changes to the configuration file
+# disable authentication
 
-exec {'echo':
-  path    => 'usr/bin:/bin',
-  command => 'echo "    IdentityFile ~/.ssh/school\n    PasswordAuthentic
-ation no" >> /etc/ssh/ssh_config',
-  returns => [0,1],
+file_line { 'Declare identity file':
+  path    => '/etc/ssh/ssh_config',
+  line    => '    IdentityFile ~/.ssh/school',
+  replace => true,
+}
+
+file_line { 'Turn off passwd auth':
+  path    => '/etc/ssh/ssh_config',
+  line    => '    PasswordAuthentication no',
+  replace => true,
 }
