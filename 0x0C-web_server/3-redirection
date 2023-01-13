@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# configure nginx server so that /redirect_me is redirecting to another page
+# redirection must be a "301 Moved Permanently"
+# using 1-install_nginx_web_server - write 3-redirection so that it configures
+# a brand new ubuntu machine to the requirements in this task
+echo "Hello World!" |  sudo tee file /var/www/html/index.html
+sudo sed -i '/server_name _;/a rewrite ^/redirect_me/ 172.217.170.46 permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
