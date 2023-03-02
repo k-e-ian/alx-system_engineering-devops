@@ -3,24 +3,25 @@
 import json
 import requests
 
-
 #def number_of_subscribers(subreddit):
-#    user = {"User-Agent": "Ahmed_belhaj"}
-#    request = requests.get("https://www.reddit.com/r/{}/about.json"
-#                           .format(subreddit), headers=user)
-#    if request.status_code == 200:
-#        return request.json().get("data").get("subscribers")
-#    else:
-#        return 0
+ #   """Return the total number of subscribers on a given subreddit."""
+    #url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    #headers = {
+    #    "User-Agent": "Ahmed_belhaj"#"linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    #}
+   # response = requests.get(url, headers=headers, allow_redirects=False)
+   # if response.status_code == 404:
+  #      return 0
+ #   results = response.json().get("data")
+#    return results.get("subscribers")
 
 def number_of_subscribers(subreddit):
-    """Return the total number of subscribers on a given subreddit."""
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {
-        "User-Agent": "Ahmed_belhaj"#"linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
-    }
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    if response.status_code == 404:
+    """queries the Reddit API and returns the number of subscribers"""
+    if subreddit is None or type(subreddit) is not str:
         return 0
-    results = response.json().get("data")
-    return results.get("subscribers")
+    url = "http://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0;Win64; x64)'}
+
+    response = requests.get(url, headers=headers).json()
+    subscribers = response.get("data", {}).get("subscribers", 0)
+    return subscribers
