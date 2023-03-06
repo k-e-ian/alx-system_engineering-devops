@@ -12,10 +12,8 @@ def count_words(subreddit, word_list, after='start', words_count=None):
         after (str): The parameter for the next page of the API results.
         count (int): The parameter of results matched thus far.
     """
-    import requests
-
     if not word_list:
-        return 0
+     	return 0
 
     if words_count is None:
         words_count = {word.lower(): 0 for word in word_list}
@@ -45,3 +43,30 @@ def count_words(subreddit, word_list, after='start', words_count=None):
             if count != 0:
                 print(str(word) + ": " + str(count))
         return 1
+
+        print("Invalid subreddit: {}".format(subreddit))
+        return
+
+    # Parse the titles of the hot articles
+    data = response.json()['data']
+    for post in data['children']:
+        title = post['data']['title']
+        title_lower = title.lower()
+        for word in word_list:
+            word_lower = word.lower()
+            if word_lower in title_lower:
+                # Count the word occurrence
+                if word_lower in counts:
+                    counts[word_lower] += title_lower.count(word_lower)
+                else:
+                    counts[word_lower] = title_lower.count(word_lower)
+
+    # Recursive call with the next batch of posts
+    next_page = data['after']
+    if next_page:
+        count_words(subreddit, word_list, next_page, counts)
+    else:
+        # Print the sorted count of the given keywords
+        sorted_counts = sorted(counts.items(), key=lambda x: (-x[1], x[0]))
+        for word, count in sorted_counts:
+            print("{}: {}".format(word, count))
